@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import logo from './logo.svg';
 import './App.css';
 import schema from './schema.json';
-import uischema from './uischema.json';
-import {
+// import uischema from './uischema.json';
+import{
   materialCells,
   materialRenderers,
 } from '@jsonforms/material-renderers';
@@ -47,6 +47,7 @@ const initialData = {
   done: true,
   recurrence: 'Daily',
   rating: 3,
+  nestedArray: ['hola','quease']
 };
 
 const renderers = [
@@ -103,7 +104,7 @@ const App = () => {
           <div className={classes.demoform}>
             <JsonForms
               schema={schema}
-              uischema={uischema}
+              /*uischema={uischema}*/
               data={data}
               renderers={renderers}
               cells={materialCells}

@@ -26,6 +26,13 @@
     },
     "recurrence_interval": {
       "type": "integer"
+    },
+    "nestedArray": {
+      "type": "array",
+      "title": "An array of numbers",
+      "items": {
+        "type": "integer"
+      }
     }
   },
   "required": ["name", "due_date"]
