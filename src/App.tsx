@@ -1,9 +1,10 @@
 import { Fragment, useState, useMemo } from 'react';
 import { JsonForms } from '@jsonforms/react';
-import Grid from '@mui/material/Grid';
+/* import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import logo from './logo.svg';
+*/
 import './App.css';
 import schema from './schema.json';
 // import uischema from './uischema.json';
@@ -47,7 +48,7 @@ const initialData = {
   done: true,
   recurrence: 'Daily',
   rating: 3,
-  nestedArray: ['hola','quease']
+  nestedArray: [200,1]
 };
 
 const renderers = [
@@ -66,54 +67,16 @@ const App = () => {
   };
 
   return (
-    <Fragment>
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to JSON Forms with React</h1>
-          <p className='App-intro'>More Forms. Less Code.</p>
-        </header>
+        <JsonForms
+          schema={schema}
+          /*uischema={uischema}*/
+          data={data}
+          renderers={renderers}
+          cells={materialCells}
+          onChange={({ errors, data }) => setData(data)}
+        />
       </div>
-
-      <Grid
-        container
-        justifyContent={'center'}
-        spacing={1}
-        className={classes.container}
-      >
-        <Grid item sm={6}>
-          <Typography variant={'h4'} className={classes.title}>
-            Bound data
-          </Typography>
-          <div className={classes.dataContent}>
-            <pre id='boundData'>{stringifiedData}</pre>
-          </div>
-          <Button
-            className={classes.resetButton}
-            onClick={clearData}
-            color='primary'
-            variant='contained'
-          >
-            Clear data
-          </Button>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography variant={'h4'} className={classes.title}>
-            Rendered form
-          </Typography>
-          <div className={classes.demoform}>
-            <JsonForms
-              schema={schema}
-              /*uischema={uischema}*/
-              data={data}
-              renderers={renderers}
-              cells={materialCells}
-              onChange={({ errors, data }) => setData(data)}
-            />
-          </div>
-        </Grid>
-      </Grid>
-    </Fragment>
   );
 };
 
